@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Globalization;
+using System.Xml.Serialization;
 
 namespace Modulo01EX02
 {
@@ -24,7 +25,12 @@ namespace Modulo01EX02
 
         public void AumentoSal(double porcentagem)
         {
-            SalarioBruto += porcentagem;
+            SalarioBruto += SalarioBruto * (porcentagem / 100);
+        }
+
+        public override string ToString()
+        {
+            return $"{Nome}, $ {SalLiquido().ToString("F2", CultureInfo.InvariantCulture)}";
         }
     }
 }
